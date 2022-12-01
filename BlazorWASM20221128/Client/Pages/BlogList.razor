@@ -1,0 +1,39 @@
+﻿@page "/bloglist"
+<h3>BlogList</h3>
+
+@if (lstBlog == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <form>
+        <div class="form-group">
+            <input type="textbox" class="form-control" @bind-value="reqModel.Blog_Title">
+            <input type="textbox" class="form-control" @bind-value="reqModel.Blog_Author">
+            <input type="textbox" class="form-control" @bind-value="reqModel.Blog_Content">
+        </div>
+        <button type="button" class="btn btn-primary" @onclick=Save>Save</button>
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in lstBlog)
+            {
+                <tr>
+                    <td>@item.Blog_Title</td>
+                    <td>@item.Blog_Author</td>
+                    <td>@item.Blog_Content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
